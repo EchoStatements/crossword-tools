@@ -42,7 +42,6 @@ Supply comma-separated word lengths and a set of letters. Finds every combinatio
 
 ```bash
 cw -m 3,8 uqsotenibat   # finds "bat question", "tab question", etc.
-cw -m 4,4,4 timesanew   # finds all 3-word anagrams of length 4+4+4
 ```
 
 ## Installation
