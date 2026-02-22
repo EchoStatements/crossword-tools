@@ -6,7 +6,7 @@ Command line tools for solving cryptic crosswords:
 - **Anagram finder**: given a set of letters, find all exact anagrams
 - **Multi-anagram finder**: given a set of letters and word lengths, find all multi-word anagrams
 
-Words are sourced from `/usr/share/dict/words`.
+![cw demo](cw.gif)
 
 ## Usage
 
@@ -18,12 +18,15 @@ cw -m <lengths> <letters>            # multi-anagram mode
 
 ### Fill-blanks mode (`-s` or no flag)
 
-Supply a pattern where known letters are given literally and each unknown position is marked with `?` or `*`. Results are printed alphabetically in columns (default: 5). Use `-n` to change the number of columns.
+Supply a pattern where known letters are given literally and each unknown position is marked with a wildcard. Results are printed alphabetically in columns (default: 5). Use `-n` to change the number of columns.
+
+'.' is to be preferred as a wildcard since the other wildcards require quotes around the word to
+be interpreted as a single argument.
 
 ```bash
-cw '?u??t???'          # finds "question", "duration", etc.
-cw -s 'c?t'            # finds "cat", "cut", "cot", etc.
-cw -n 3 '?u??t???'     # 3 columns
+cw .u..t...            # finds "question", "duration", etc.
+cw -s c.t              # finds "cat", "cut", "cot", etc.
+cw -n 3 .u..t...       # 3 columns
 cw -n 1 -a uqsoteni    # one word per line
 ```
 
@@ -72,6 +75,10 @@ If `~/.local/bin` is not yet on your `PATH`, add this to your shell profile (`~/
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
+
+## Attribution
+
+Word list sourced from [wordnik/wordlist](https://github.com/wordnik/wordlist/tree/main).
 
 ## License
 

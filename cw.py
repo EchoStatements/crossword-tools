@@ -1,8 +1,9 @@
 import argparse
 import re
 from collections import Counter
+from pathlib import Path
 
-DICT = "/usr/share/dict/words"
+DICT = Path(__file__).parent / "wordlist.txt"
 
 
 def load_words() -> list[str]:
@@ -35,7 +36,7 @@ def crossword_solver(pattern: str) -> list[str]:
     Returns:
         list[str]: Words from the dictionary that match the pattern.
     """
-    regex = "^" + re.sub(r"[?*]", ".", pattern.lower()) + "$"
+    regex = "^" + re.sub(r"[?*.]", ".", pattern.lower()) + "$"
     return [word for word in load_words() if re.match(regex, word)]
 
 

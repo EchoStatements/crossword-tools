@@ -6,6 +6,7 @@ repos:
     -   id: end-of-file-fixer
     -   id: check-yaml
     -   id: check-added-large-files
+        exclude: '^wordlist\.txt$'
 
 -   repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.6
@@ -18,4 +19,4 @@ repos:
     rev: v1.16.23
     hooks:
     -   id: typos
-        exclude: '\.ipynb$'
+        exclude: '(\.ipynb|wordlist\.txt)$'
